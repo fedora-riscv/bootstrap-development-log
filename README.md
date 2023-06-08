@@ -2,7 +2,7 @@
 
 # 简介
 
-[https://github.com/U2FsdGVkX1/bootstrap](https://github.com/U2FsdGVkX1/bootstrap)
+[https://github.com/fedora-riscv/bootstrap](https://github.com/fedora-riscv/bootstrap)
 
 为了实现 Fedora 自举，写了一个脚本快速完成 stage1（构建交叉编译器） 和 stage2（构建最小系统），并且安装 rpm 和前置依赖
 
