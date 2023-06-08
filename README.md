@@ -293,6 +293,33 @@ make MYCFLAGS="-fPIC" linux -j$J
 make INSTALL_TOP=/usr install
 ```
 
+另外需要手动写一个 pkg-config 文件以便其他包可以识别到 lua
+
+```bash
+cat > /usr/lib/pkgconfig/lua.pc << "EOF"
+V=5.4
+R=5.4.6
+
+prefix=/usr
+INSTALL_BIN=${prefix}/bin
+INSTALL_INC=${prefix}/include
+INSTALL_LIB=${prefix}/lib
+INSTALL_MAN=${prefix}/share/man/man1
+INSTALL_LMOD=${prefix}/share/lua/${V}
+INSTALL_CMOD=${prefix}/lib/lua/${V}
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: Lua
+Description: An Extensible Extension Language
+Version: ${R}
+Requires:
+Libs: -L${libdir} -llua -lm -ldl
+Cflags: -I${includedir}
+EOF
+```
+
 ## gettext & curl & git
 
 为了之后能拉到 git 的包，所以安装了 git
